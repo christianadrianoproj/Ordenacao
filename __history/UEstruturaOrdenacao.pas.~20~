@@ -1,0 +1,132 @@
+unit UEstruturaOrdenacao;
+
+interface
+
+uses System.Classes, System.SysUtils;
+
+type
+  TEstruturaOrdenacao = class
+  private
+  public
+    class function BubbleSort(var vet: Array of integer): TTime;
+    class function ShellSort(var vet: Array of integer): TTime;
+    class function QuickSort(var vet: Array of integer; ini, fim:Integer): TTime;
+  end;
+
+implementation
+
+{ TEstruturaOrdenacao }
+
+class function TEstruturaOrdenacao.BubbleSort(var vet: array of integer): TTime;
+var
+  i,j,aux: Integer;
+begin
+  {Ordena o array}
+  for i := High(vet) downto 2 do
+  begin
+    for j := 1 to i-1 do
+    begin
+      if vet[j] > vet[j+1] then
+      begin
+        aux := vet[j];
+        vet[j] := vet[j+1];
+        vet[j+1] := aux;
+      end;
+    end;
+  end;
+  Result := time;
+end;
+
+class function TEstruturaOrdenacao.QuickSort(var vet: array of integer; ini, fim: Integer): TTime;
+var
+  meio,l,r: Integer;
+  function swap (larray : array of integer; links :integer; rechts:integer): array of integer;
+  var temp : integer;
+  begin
+      temp                    := larray[links];
+      larray[links]           := larray[rechts];
+      larray[rechts]          := temp;
+      swap                    := larray;
+  end;
+Begin
+  {Meio := vet[(Ini + Fim) div 2];
+  repeat
+    while Vet[Ini] < Meio do
+      Ini:= Ini + 1;
+
+    while Vet[Fim] > Meio do
+      Fim:= Fim - 1;
+
+    if Ini <= Fim then
+    begin
+      T := vet[Ini];
+      Vet[Ini] := Vet[Fim];
+      Vet[Fim] := T;
+      Ini := Ini + 1;
+      Fim := Fim - 1;
+    end;
+  until Ini > Fim;
+
+  if Fim > 1 then
+    QuickSort(Vet, 1, Fim);
+  if Ini < High(vet) then
+    QuickSort(Vet, Ini, High(vet)); }
+
+  if (Fim > ini) then
+  begin
+    l := ini;
+    r := Fim;
+    Meio := vet[(Fim+ini) div 2];
+
+    while (l<r) do begin
+       while vet[l] < Meio do
+         l:=l+1;
+       while vet[r] > Meio do
+         r:=r-1;
+       if (l<=r) then
+       begin
+         vet := swap(vet,l,r);
+         l := l+1;
+         r := r-1;
+       end;
+    end;
+
+    if (ini < r) then
+      quicksort(ini, r, vet);
+    if (Fim > l) then
+      quicksort(l, Fim, vet);
+  end;
+
+  Result := time;
+end;
+
+class function TEstruturaOrdenacao.ShellSort(var vet: array of integer): TTime;
+var
+  vetm, i,j,k,x,c: Integer;
+begin
+  vetm := High(vet) div 2;
+  while (vetm > 0) do
+  begin
+    for i := (vetm + 1) to High(vet) do
+    begin
+      j := i - vetm;
+      while ( j > 0 ) do
+      begin
+        k := j + vetm;
+        if ( vet[j] <= vet[k] ) then
+          j:= 0
+        else
+        Begin
+          c := vet[j];
+          vet[j] := vet[k];
+          vet[k] := c;
+          j:= j - vetm;
+        end;
+      end;
+    end;
+    vetm := vetm div 2;
+  end;
+  Result := time;
+end;
+
+end.

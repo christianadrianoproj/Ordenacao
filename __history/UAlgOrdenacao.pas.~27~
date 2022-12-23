@@ -1,0 +1,129 @@
+unit UAlgOrdenacao;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UEstruturaOrdenacao, Vcl.StdCtrls;
+
+type
+  TfrmOrdenacao = class(TForm)
+    btgerarLista: TButton;
+    Memo1: TMemo;
+    Label1: TLabel;
+    Label2: TLabel;
+    Memo2: TMemo;
+    GroupBox1: TGroupBox;
+    btBubbleSort: TButton;
+    btShellSort: TButton;
+    btQuickSort: TButton;
+    Label3: TLabel;
+    lblTempo: TLabel;
+    procedure FormCreate(Sender: TObject);
+    procedure btgerarListaClick(Sender: TObject);
+    procedure btBubbleSortClick(Sender: TObject);
+    procedure btShellSortClick(Sender: TObject);
+    procedure btQuickSortClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmOrdenacao: TfrmOrdenacao;
+
+ const
+   CMax = 500;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmOrdenacao.btBubbleSortClick(Sender: TObject);
+var
+  TempoInicio, TempoFinal: TTime;
+  vetor: Array[1..CMax] of integer;
+  i: integer;
+begin
+  for I := 1 to CMax do
+   vetor[i] := -1;
+
+  { preenche o vetor com os numeros gerados }
+  for I := 0 to Memo1.Lines.Count-1 do
+    vetor[i+1] := StrToInt(Memo1.Lines.Strings[i]);
+
+  TempoInicio := Time;
+  TempoFinal := TEstruturaOrdenacao.BubbleSort(vetor);
+
+  { mostra os nuemros do vetor ordenado na lista ordenado }
+  Memo2.Lines.Clear;
+  for I := 1 to CMax do
+    Memo2.Lines.Add(IntToStr(vetor[i]));
+
+  lblTempo.Caption := FloatToStr(TempoFinal - TempoInicio);
+end;
+
+procedure TfrmOrdenacao.btgerarListaClick(Sender: TObject);
+var
+  i: integer;
+begin
+  Memo1.Lines.Clear;
+  for I := 0 to CMax-1 do
+    Memo1.Lines.Add(IntToStr(Random(1000)));
+end;
+
+procedure TfrmOrdenacao.btQuickSortClick(Sender: TObject);
+var
+  TempoInicio, TempoFinal: TTime;
+  vetor: Array of integer;
+  i: integer;
+begin
+  SetLength(vetor,CMax);
+
+  { preenche o vetor com os numeros gerados }
+  for I := 0 to Memo1.Lines.Count-1 do
+    vetor[i+1] := StrToInt(Memo1.Lines.Strings[i]);
+
+  TempoInicio := Time;
+  TempoFinal := TEstruturaOrdenacao.QuickSort(vetor,Low(vetor), High(vetor));
+
+  { mostra os nuemros do vetor ordenado na lista ordenado }
+  Memo2.Lines.Clear;
+  for I := 1 to CMax do
+    Memo2.Lines.Add(IntToStr(vetor[i]));
+
+  lblTempo.Caption := FloatToStr(TempoFinal - TempoInicio);
+end;
+
+procedure TfrmOrdenacao.btShellSortClick(Sender: TObject);
+var
+  TempoInicio, TempoFinal: TTime;
+  vetor: Array of integer;
+  i: integer;
+begin
+  SetLength(vetor,CMax);
+
+  { preenche o vetor com os numeros gerados }
+  for I := 0 to Memo1.Lines.Count-1 do
+    vetor[i+1] := StrToInt(Memo1.Lines.Strings[i]);
+
+  TempoInicio := Time;
+  TempoFinal := TEstruturaOrdenacao.ShellSort(vetor);
+
+  { mostra os nuemros do vetor ordenado na lista ordenado }
+  Memo2.Lines.Clear;
+  for I := Low(vetor) to High(vetor) do
+    Memo2.Lines.Add(IntToStr(vetor[i]));
+
+  lblTempo.Caption := FloatToStr(TempoFinal - TempoInicio);
+end;
+
+procedure TfrmOrdenacao.FormCreate(Sender: TObject);
+begin
+  Memo1.Lines.Clear;
+  Memo2.Lines.Clear;
+  lblTempo.Caption := '';
+end;
+
+end.

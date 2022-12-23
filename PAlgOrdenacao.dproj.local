@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018/07/27 06:31:32.000.239,=C:\Users\Christian\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/07/27 22:19:32.000.613,=C:\Users\Christian\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/07/30 08:52:07.000.201,=C:\Users\Christian\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/09/06 19:19:49.000.121,=C:\Users\Christian\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/09/06 19:21:12.000.153,C:\Users\Christian\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\Christian\Desktop\senac\2 Semestre\ED\Fontes\Ordenacao\UAlgOrdenacao.dfm</Transaction>
+    <Transaction>2018/09/06 19:21:12.000.153,C:\Users\Christian\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\Christian\Desktop\senac\2 Semestre\ED\Fontes\Ordenacao\UAlgOrdenacao.pas</Transaction>
+    <Transaction>2018/09/06 19:21:23.000.968,C:\Users\Christian\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\Christian\Desktop\senac\2 Semestre\ED\Fontes\Ordenacao\PAlgOrdenacao.dproj</Transaction>
+    <Transaction>2018/09/06 19:21:47.000.832,=C:\Users\Christian\Desktop\senac\2 Semestre\ED\Fontes\Ordenacao\Unit1.pas</Transaction>
+    <Transaction>2018/09/06 19:23:07.000.682,C:\Users\Christian\Desktop\senac\2 Semestre\ED\Fontes\Ordenacao\Unit1.pas=C:\Users\Christian\Desktop\senac\2 Semestre\ED\Fontes\Ordenacao\UEstruturaOrdenacao.pas</Transaction>
+  </Transactions>
+</BorlandProject>
